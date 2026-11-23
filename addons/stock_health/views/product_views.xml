@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_stock_health"
+            model="ir.ui.view">
+
+        <field name="name">
+            product.template.form.stock.health
+        </field>
+
+        <field name="model">product.template</field>
+
+        <field name="inherit_id"
+               ref="product.product_template_only_form_view"/>
+
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='list_price']"
+                   position="after">
+
+                <field name="stock_min_threshold"
+                       invisible="not is_storable"/>
+
+                <field name="stock_health_status"
+                       widget="badge"
+                       readonly="1"
+                       invisible="not is_storable"
+                       decoration-success="stock_health_status == 'ok'"
+                       decoration-warning="stock_health_status == 'low'"
+                       decoration-danger="stock_health_status == 'out'"/>
+
+            </xpath>
+        </field>
+    </record>
+</odoo>
