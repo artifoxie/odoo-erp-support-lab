@@ -64,3 +64,29 @@ Status is "Healthy".
 
 **Expected Result:**
 Status changes from "Healthy" to "Low Stock".
+
+
+## E2E-001: Partial Purchase Receipt and Stock Health
+
+**Environment:** Odoo 18 Community, PostgreSQL 15
+
+**Product:** Brushless Motor 2207 - Tracked  
+**Minimum Stock Threshold:** 20
+
+### Steps
+
+1. Create a tracked inventory product with zero stock.
+2. Verify status: Out of Stock.
+3. Create a purchase order for 50 units.
+4. Validate a partial receipt of 10 units.
+5. Create a backorder for the remaining 40 units.
+6. Verify On Hand = 10 and status = Low Stock.
+7. Validate the remaining 40 units.
+8. Verify On Hand = 50 and status = Healthy.
+
+### Actual Result
+
+All three stock statuses displayed correctly.
+The stock quantity was updated after completed receipts.
+
+**Result:** PASS
