@@ -13,20 +13,32 @@
                ref="product.product_template_only_form_view"/>
 
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='list_price']"
-                   position="after">
+            <xpath expr="//notebook" position="inside">
+                <page string="Stock Health" name="stock_health_page">
+                    <group>
+                        <group string="Inventory Monitoring">
+                            <field name="is_storable" invisible="1"/>
 
-                <field name="stock_min_threshold"
-                       invisible="not is_storable"/>
+                            <field name="stock_min_threshold"
+                                string="Minimum Stock Threshold"
+                                invisible="not is_storable"/>
 
-                <field name="stock_health_status"
-                       widget="badge"
-                       readonly="1"
-                       invisible="not is_storable"
-                       decoration-success="stock_health_status == 'ok'"
-                       decoration-warning="stock_health_status == 'low'"
-                       decoration-danger="stock_health_status == 'out'"/>
+                            <field name="qty_available"
+                                string="On Hand Quantity"
+                                readonly="1"
+                                invisible="not is_storable"/>
 
+                            <field name="stock_health_status"
+                                string="Stock Health"
+                                widget="badge"
+                                readonly="1"
+                                decoration-success="stock_health_status == 'ok'"
+                                decoration-warning="stock_health_status == 'low'"
+                                decoration-danger="stock_health_status == 'out'"
+                                invisible="not is_storable"/>
+                        </group>
+                    </group>
+                </page>
             </xpath>
         </field>
     </record>
