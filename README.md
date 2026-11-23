@@ -113,3 +113,12 @@ Screenshots of the product form and stock status scenarios will be added here.
 Artur Aivazian
 
 Backend Developer | ERP Development & Application Support
+
+
+## Incident Investigations
+
+| Incident | Description | Status |
+|---|---|---|
+| [INC-001](docs/incidents/INC-001-untracked-product.md) | Inventory quantity not updated for an untracked product | Resolved |
+
+The investigation includes Odoo ORM diagnostics, stock movement analysis, root cause identification, and verification through a complete purchase receipt workflow.
